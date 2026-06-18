@@ -88,15 +88,30 @@ input:focus-visible {
   outline-offset:2px;
 }
 
-/* 9 — OPTIONAL PAPER TEXTURE (site-wide).
-   Preview before publishing. If it fights your section colors,
-   delete this block and just set the base color to paper in Site Styles. */
-/*
+/* 9 — PAPER TEXTURE (site-wide substrate, real asset).
+   Sits behind everything; multiply keeps the light paper scan subtle.
+   Preview in incognito. If it reads too strong, lower the format width
+   (e.g. ?format=750w) or switch to the tiled alternative below. */
 body::before {
   content:"";
   position:fixed; inset:0; z-index:-1; pointer-events:none;
   background-color:var(--paper);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background-image:url("https://images.squarespace-cdn.com/content/v1/5331e1afe4b05113a3c343ad/f0505980-a52d-4d44-a9b9-2a85453434c2/Slide+Background.jpg?format=2500w");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-blend-mode:multiply;
+}
+
+/* Tiled alternative — swap in if you'd rather repeat a lighter texture
+   than stretch one sheet. Comment out the block above, uncomment this. */
+/*
+body::before {
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-color:var(--paper);
+  background-image:url("https://images.squarespace-cdn.com/content/v1/5331e1afe4b05113a3c343ad/f0505980-a52d-4d44-a9b9-2a85453434c2/Slide+Background.jpg?format=750w");
+  background-size:600px; background-repeat:repeat;
   background-blend-mode:multiply;
 }
 */
