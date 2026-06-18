@@ -1,0 +1,407 @@
+<!-- ============================================================
+     HEY KALEB — Brand Style Guide & Design System  v1.3 (AA audited)
+     Direction: Heritage Revival, rebalanced
+     Color rule: bright coral = DECORATION + fills only (never readable text);
+       Teal Ink carries accent text on paper; on navy pair with blush / jade teal / paper (never coral).
+     Type: Playfair (signature + italic pivot accents) · Quicksand 700 (headers) · Lexend (body) · Permanent Marker (accent/callout, sparingly)
+     Substrate: textured paper (locked, everywhere)
+     Includes: AIxUXR community bridge / brand architecture
+     ============================================================ -->
+<div id="brandbook">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;0,900;1,500;1,600;1,800;1,900&family=Quicksand:wght@400;500;600;700&family=Lexend:wght@300;400;500;600;700&family=Permanent+Marker&display=swap');
+
+    #brandbook { all: initial; display:block; font-family:'Lexend',system-ui,sans-serif; color:#243C54; line-height:1.6; -webkit-font-smoothing:antialiased;
+      /* ---- DESIGN TOKENS ---- */
+      --ink:#243C54; --ink-deep:#1A2C40;
+      --coral:#FA6060; --coral-deep:#356E6E;  /* coral-deep RETIRED -> teal-ink; coral is decoration only */
+      --teal:#549C9C; --teal-deep:#356E6E;
+      --blush:#EFA8A8;
+      --paper:#F3F1EC; --paper-deep:#E9E4D9; --line:#DAD3C5;
+      --body:#33424F;
+      position:relative;
+      background-color:var(--paper);
+    }
+    #brandbook *, #brandbook *::before, #brandbook *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    /* ---- PAPER TEXTURE (locked substrate) ---- */
+    #brandbook::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:0; opacity:.55; mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.42'/></svg>"); }
+    #brandbook > * { position:relative; z-index:1; }
+
+    #brandbook .wrap{ max-width:1080px; margin:0 auto; padding:0 40px; }
+    #brandbook section{ padding:60px 0; border-top:1px solid var(--line); }
+    #brandbook .eyebrow{ font-family:'Quicksand'; font-weight:700; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:14px; }
+    #brandbook h2.sec{ font-family:'Playfair Display',serif; font-weight:800; font-size:clamp(26px,3.4vw,40px); letter-spacing:-.01em; color:var(--ink); margin-bottom:6px; }
+    #brandbook .sec-aside{ font-family:'Quicksand'; font-weight:600; font-style:italic; color:var(--teal-deep); font-size:16px; margin-bottom:30px; }
+    #brandbook p{ color:var(--body); max-width:64ch; }
+    #brandbook .lead{ font-size:17px; }
+
+    /* ---- COVER ---- */
+    #brandbook .cover{ background:var(--ink); color:var(--paper); padding:80px 40px 72px; border-top:0; position:relative; overflow:hidden; }
+    #brandbook .cover::after{ /* paper texture also over navy */ content:""; position:absolute; inset:0; opacity:.16; mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+    #brandbook .cover .wrap{ position:relative; z-index:2; }
+    #brandbook .cover .blob1{ position:absolute; width:340px; height:300px; right:-40px; top:-60px; background:var(--blush); opacity:.9; border-radius:64% 36% 54% 46%/52% 44% 56% 48%; z-index:1; }
+    #brandbook .cover .blob2{ position:absolute; width:150px; height:150px; right:180px; top:120px; background:var(--blush); opacity:.85; border-radius:50%; z-index:1; }
+    #brandbook .cover .dot{ position:absolute; width:60px; height:60px; left:-18px; bottom:-18px; background:var(--teal); border-radius:62% 38% 40% 60%/49% 51% 49% 51%; opacity:.95; }
+    #brandbook .cover .tag{ font-family:'Quicksand'; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--blush); margin-bottom:26px; }
+    #brandbook .cover h1{ font-family:'Playfair Display',serif; font-weight:900; font-size:clamp(48px,9vw,104px); line-height:.92; letter-spacing:-.02em; }
+    #brandbook .cover h1 .amp{ color:var(--blush); }
+    #brandbook .cover .sub{ font-family:'Quicksand'; font-weight:600; font-size:clamp(14px,2vw,18px); letter-spacing:.04em; color:#cdd7df; margin-top:20px; }
+    #brandbook .cover .meta{ margin-top:40px; font-family:'Lexend'; font-weight:300; font-size:13px; color:#9fb0bd; letter-spacing:.02em; }
+
+    /* ---- generic grids ---- */
+    #brandbook .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+    #brandbook .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+
+    /* ---- ESSENCE ---- */
+    #brandbook .pos{ font-family:'Playfair Display',serif; font-weight:800; font-style:italic; font-size:clamp(22px,3vw,30px); line-height:1.28; color:var(--ink); max-width:24ch; }
+    #brandbook .pos b{ font-style:normal; color:var(--coral-deep); }
+    #brandbook .traits{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    #brandbook .trait{ font-family:'Quicksand'; font-weight:600; font-size:13px; padding:7px 14px; border-radius:40px; background:var(--paper-deep); border:1px solid var(--line); color:var(--ink); }
+
+    /* ---- wordmark / logo ---- */
+    #brandbook .logobox{ background:var(--paper-deep); border:1px solid var(--line); border-radius:6px; padding:40px; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap; }
+    #brandbook .wordmark{ font-family:'Playfair Display',serif; font-weight:900; font-size:46px; color:var(--ink); letter-spacing:-.01em; line-height:1; }
+    #brandbook .wordmark .pd{ color:var(--coral); }
+    #brandbook .portrait{ width:120px; height:120px; flex:0 0 auto; }
+    #brandbook .misuse li{ list-style:none; font-size:13.5px; color:var(--body); padding:8px 0 8px 26px; position:relative; border-bottom:1px dashed var(--line); }
+    #brandbook .misuse li::before{ content:"✕"; position:absolute; left:0; color:var(--coral-deep); font-weight:700; }
+
+    /* ---- COLOR ---- */
+    #brandbook .swrow{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+    #brandbook .swatch .chip{ height:96px; border-radius:6px; border:1px solid rgba(0,0,0,.08); }
+    #brandbook .swatch .nm{ font-family:'Quicksand'; font-weight:700; font-size:13px; margin-top:10px; color:var(--ink); }
+    #brandbook .swatch .hx{ font-family:'Lexend'; font-weight:600; font-size:11.5px; color:var(--teal-deep); letter-spacing:.03em; }
+    #brandbook .swatch .ro{ font-size:11px; color:var(--body); margin-top:2px; }
+    #brandbook .ratio{ display:flex; height:26px; border-radius:5px; overflow:hidden; margin:24px 0 8px; border:1px solid var(--line); }
+    #brandbook .note{ font-size:12.5px; color:var(--body); background:var(--paper-deep); border-left:3px solid var(--teal); padding:12px 16px; border-radius:0 5px 5px 0; }
+
+    /* ---- TYPE ---- */
+    #brandbook .scale > div{ border-bottom:1px solid var(--line); padding:16px 0; display:flex; align-items:baseline; gap:20px; flex-wrap:wrap; }
+    #brandbook .scale .tag{ font-family:'Lexend'; font-weight:600; font-size:11px; color:var(--teal-deep); width:130px; flex:0 0 auto; letter-spacing:.04em; }
+    #brandbook .ty-display{ font-family:'Playfair Display',serif; font-weight:900; font-size:46px; color:var(--ink); line-height:1; }
+    #brandbook .ty-display em{ font-style:italic; font-weight:800; }
+    #brandbook .ty-display em.coral{ color:var(--coral-deep); } /* pivot accent on paper -> teal-ink (coral retired from text) */
+    #brandbook .mk-comm{ font-family:'Permanent Marker'; color:var(--blush); transform:rotate(-2deg); display:inline-block; }
+    #brandbook .ty-h1{ font-family:'Playfair Display',serif; font-weight:800; font-size:34px; color:var(--ink); }
+    #brandbook .ty-h2{ font-family:'Playfair Display',serif; font-weight:700; font-style:italic; font-size:26px; color:var(--ink); }
+    #brandbook .ty-h3{ font-family:'Quicksand'; font-weight:700; font-size:19px; color:var(--ink); }
+    #brandbook .ty-work{ font-family:'Quicksand'; font-weight:700; font-size:24px; color:var(--ink); letter-spacing:.004em; }
+    #brandbook .ty-eye{ font-family:'Quicksand'; font-weight:700; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:var(--coral-deep); }
+    #brandbook .ty-body{ font-family:'Lexend'; font-weight:400; font-size:16px; color:var(--body); }
+    #brandbook .ty-cap{ font-family:'Lexend'; font-weight:300; font-size:13px; color:var(--teal-deep); }
+
+    /* ---- VOICE ---- */
+    #brandbook .voice{ background:var(--paper-deep); border:1px solid var(--line); border-radius:6px; padding:30px 32px; }
+    #brandbook .voice .st{ font-family:'Playfair Display',serif; font-weight:800; font-size:24px; color:var(--ink); }
+    #brandbook .voice .as{ font-family:'Quicksand'; font-weight:600; font-style:italic; font-size:16px; color:var(--coral-deep); }
+    #brandbook .dodont{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:24px; }
+    #brandbook .dodont h4{ font-family:'Quicksand'; font-weight:700; font-size:12px; letter-spacing:.16em; text-transform:uppercase; margin-bottom:8px; }
+    #brandbook .do h4{ color:var(--teal-deep); } #brandbook .dont h4{ color:var(--ink); }
+    #brandbook .dodont p{ font-size:13.5px; }
+
+    /* ---- COMPONENTS ---- */
+    #brandbook .btn{ font-family:'Quicksand'; font-weight:700; font-size:14px; padding:13px 26px; border-radius:4px; border:0; cursor:pointer; letter-spacing:.01em; }
+    #brandbook .btn-primary{ background:var(--ink); color:var(--paper); } #brandbook .btn-primary:hover{ background:var(--ink-deep); }
+    #brandbook .btn-accent{ background:var(--coral); color:#3a1414; } #brandbook .btn-accent:hover{ background:var(--ink); color:#fff; }
+    #brandbook .btn-ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
+    #brandbook .card{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:24px; box-shadow:0 1px 0 rgba(36,60,84,.04); }
+    #brandbook .card .k{ font-family:'Quicksand'; font-weight:700; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--teal-deep); }
+    #brandbook .card h4{ font-family:'Quicksand'; font-weight:700; font-size:19px; color:var(--ink); margin:8px 0 6px; letter-spacing:.004em; }
+    #brandbook .card p{ font-size:14px; }
+    #brandbook .pill{ display:inline-block; font-family:'Quicksand'; font-weight:600; font-size:12px; padding:5px 12px; border-radius:30px; background:var(--teal-deep); color:#fff; }
+    #brandbook .quote{ border-left:3px solid var(--coral); padding-left:22px; }
+    #brandbook .quote p{ font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:22px; color:var(--ink); }
+    #brandbook .quote .mk{ font-family:'Playfair Display',serif; font-weight:900; color:var(--coral); font-size:40px; line-height:0; }
+
+    /* ---- BRAND ARCHITECTURE / AIxUXR BRIDGE ---- */
+    #brandbook .arch{ display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    #brandbook .arch .col{ padding:34px; }
+    #brandbook .arch .personal{ background:var(--paper); }
+    #brandbook .arch .community{ background:var(--ink); color:var(--paper); position:relative; overflow:hidden; }
+    #brandbook .arch .community::after{ content:""; position:absolute; inset:0; opacity:.14; mix-blend-mode:overlay; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+    #brandbook .arch .community > *{ position:relative; z-index:1; }
+    #brandbook .arch .label{ font-family:'Quicksand'; font-weight:700; font-size:11px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:18px; }
+    #brandbook .arch .personal .label{ color:var(--coral-deep); } #brandbook .arch .community .label{ color:var(--blush); }
+    #brandbook .mark-hk{ font-family:'Playfair Display',serif; font-weight:900; font-size:38px; color:var(--ink); }
+    #brandbook .mark-hk .pd{ color:var(--coral); }
+    #brandbook .mark-x{ font-family:'Playfair Display',serif; font-weight:900; font-size:40px; color:var(--paper); letter-spacing:.01em; }
+    #brandbook .mark-x .x{ color:var(--blush); font-style:italic; padding:0 2px; }
+    #brandbook .mark-x .uxr{ color:var(--teal); }
+    #brandbook .constellation{ margin-top:18px; height:54px; position:relative; }
+    #brandbook .constellation i{ position:absolute; border-radius:50%; display:block; }
+    #brandbook .archnote{ font-size:13px; margin-top:8px; }
+    #brandbook .arch .community .archnote{ color:#c4d0d9; }
+    #brandbook .shared{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    #brandbook .shared .s{ font-family:'Quicksand'; font-weight:600; font-size:12px; padding:6px 13px; border-radius:30px; background:var(--paper-deep); border:1px solid var(--line); color:var(--ink); }
+
+    /* ---- internal note ---- */
+    #brandbook .internal{ background:var(--ink); color:var(--paper); border-radius:8px; padding:28px 30px; }
+    #brandbook .internal h3{ font-family:'Quicksand'; font-weight:700; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--blush); margin-bottom:12px; }
+    #brandbook .internal p{ color:#cdd7df; font-size:14px; max-width:70ch; }
+
+    #brandbook .foot{ text-align:center; padding:40px; color:var(--teal-deep); font-family:'Quicksand'; font-weight:600; font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
+
+    @media (max-width:780px){
+      #brandbook .grid2,#brandbook .grid3,#brandbook .swrow,#brandbook .dodont,#brandbook .arch{ grid-template-columns:1fr; }
+      #brandbook .swrow{ grid-template-columns:1fr 1fr; }
+      #brandbook .wrap,#brandbook .cover{ padding-left:22px; padding-right:22px; }
+    }
+  </style>
+
+  <!-- ========== COVER ========== -->
+  <div class="cover">
+    <span class="blob1"></span><span class="blob2"></span><span class="dot"></span>
+    <div class="wrap">
+      <div class="tag">Brand Style Guide &amp; Design System · v1.3 · 2026</div>
+      <h1>hey<br>kaleb<span class="amp">.</span></h1>
+      <div class="sub">AI-integrated UX research, designed for humans.</div>
+      <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(26px,4.4vw,48px);line-height:1.05;margin-top:30px;color:var(--paper);letter-spacing:-.01em;">From <em style="font-style:italic;font-weight:800;">surviving</em> to <em style="font-style:italic;font-weight:800;color:var(--blush);">thriving</em>.</div>
+      <div class="meta">Direction: Heritage Revival, rebalanced · Type: Playfair · Quicksand · Lexend · Substrate: textured paper · Loosbrock Strategies, LLC</div>
+    </div>
+  </div>
+
+  <!-- ========== ESSENCE ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">01 — Brand Essence</div>
+    <h2 class="sec">Who this is.</h2>
+    <div class="sec-aside">In a nutshell.</div>
+    <div class="grid2">
+      <div>
+        <p class="pos">The <b>human-led</b> voice of research in the age of AI — rigorous, warm, and impossible to mistake for a tool vendor.</p>
+      </div>
+      <div>
+        <p class="lead">Kaleb helps research teams use AI to supercharge their work without losing the craft, ethics, or humanity that make research worth doing. The brand should feel like the opposite of cold, synthetic AI: tactile, warm, made by a person.</p>
+        <div class="traits">
+          <span class="trait">Warm</span><span class="trait">Rigorous</span><span class="trait">Human-led</span>
+          <span class="trait">Editorial</span><span class="trait">Hand-made</span><span class="trait">Optimistic</span>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ========== LOGO ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">02 — Wordmark &amp; Portrait</div>
+    <h2 class="sec">The signature.</h2>
+    <div class="sec-aside">Set in Playfair, anchored by the engraving.</div>
+    <div class="logobox">
+      <svg class="portrait" viewBox="0 0 120 120" aria-label="Engraved portrait placeholder">
+        <defs><clipPath id="ov"><ellipse cx="60" cy="60" rx="46" ry="52"/></clipPath></defs>
+        <ellipse cx="60" cy="60" rx="46" ry="52" fill="none" stroke="#243C54" stroke-width="2"/>
+        <g clip-path="url(#ov)" stroke="#243C54" stroke-width="1" opacity="0.85" fill="none">
+          <!-- engraving hatch + simple bust -->
+          <path d="M60 38c10 0 17 8 17 19 0 8-4 14-9 17 10 3 19 12 22 24H30c3-12 12-21 22-24-5-3-9-9-9-17 0-11 7-19 17-19z" fill="#243C54" opacity="0.12"/>
+          <path d="M60 38c10 0 17 8 17 19 0 8-4 14-9 17 10 3 19 12 22 24H30c3-12 12-21 22-24-5-3-9-9-9-17 0-11 7-19 17-19z"/>
+          <line x1="20" y1="46" x2="100" y2="46"/><line x1="16" y1="56" x2="104" y2="56"/>
+          <line x1="16" y1="66" x2="104" y2="66"/><line x1="18" y1="76" x2="102" y2="76"/>
+          <line x1="22" y1="86" x2="98" y2="86"/>
+        </g>
+      </svg>
+      <div style="text-align:left;">
+        <div class="wordmark">hey kaleb<span class="pd">.</span></div>
+        <p style="font-size:13px;margin-top:10px;">Primary lockup. The period is the one fixed accent — coral on light grounds, blush on navy. Portrait inks in navy and can stand alone as an avatar.</p>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:26px;">
+      <div>
+        <div class="eyebrow" style="color:var(--teal-deep)">Clear space &amp; sizing</div>
+        <p style="font-size:13.5px;">Give the wordmark breathing room equal to the height of the "h" on all sides. Never below 24px tall in digital. The portrait avatar never below 32px.</p>
+      </div>
+      <div>
+        <div class="eyebrow" style="color:var(--ink)">Don't</div>
+        <ul class="misuse">
+          <li>Recolor the wordmark — navy or paper-reversed only</li>
+          <li>Recolor the period outside its accent — coral on light, blush on navy</li>
+          <li>Stretch, outline, or add shadow to the engraving</li>
+          <li>Set the wordmark in any face but Playfair Display</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ========== COLOR ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">03 — Color</div>
+    <h2 class="sec">Cool ground, warm signal.</h2>
+    <div class="sec-aside">Navy grounds. Teal carries accent text. Coral is decoration.</div>
+    <div class="swrow">
+      <div class="swatch"><div class="chip" style="background:#243C54"></div><div class="nm">Ink Navy</div><div class="hx">#243C54</div><div class="ro">Primary · text, dark fills</div></div>
+      <div class="swatch"><div class="chip" style="background:#FA6060"></div><div class="nm">Coral</div><div class="hx">#FA6060</div><div class="ro">Decoration &amp; fills only</div></div>
+      <div class="swatch"><div class="chip" style="background:#549C9C"></div><div class="nm">Jade Teal</div><div class="hx">#549C9C</div><div class="ro">Support · large on navy</div></div>
+      <div class="swatch"><div class="chip" style="background:#356E6E"></div><div class="nm">Teal Ink</div><div class="hx">#356E6E</div><div class="ro">Accent text on paper (AA)</div></div>
+      <div class="swatch"><div class="chip" style="background:#EFA8A8"></div><div class="nm">Blush</div><div class="hx">#EFA8A8</div><div class="ro">Soft tint</div></div>
+      <div class="swatch"><div class="chip" style="background:#F3F1EC;border-color:#DAD3C5"></div><div class="nm">Paper</div><div class="hx">#F3F1EC</div><div class="ro">Textured substrate</div></div>
+    </div>
+    <div class="eyebrow" style="color:var(--teal-deep);margin-top:34px;">Usage ratio — roughly 60 / 25 / 10 / 5</div>
+    <div class="ratio">
+      <span style="width:60%;background:#F3F1EC"></span><span style="width:25%;background:#243C54"></span><span style="width:10%;background:#FA6060"></span><span style="width:5%;background:#549C9C"></span>
+    </div>
+    <p style="font-size:12.5px;">Paper carries most surfaces. Navy does the heavy structural and text work. Coral is rationed — it earns attention because it's rare. Teal and blush are seasoning.</p>
+    <div class="note" style="margin-top:20px;"><b>Accessibility — the rule that governs the brights.</b> Navy and body grey on paper are AAA. Bright coral and teal are <b>not</b> readable as text (coral 2.69, teal 2.81 on paper). So: <b>bright coral is decoration and fills only — never readable text.</b> <b>Teal Ink (#356E6E) carries accent text on paper.</b> On navy, coral reads harsh, so pair with <b>blush, jade teal, or paper</b> — never coral. On fills: paper text on navy, dark-ink text on coral, white text on teal-deep. Full results in §09.
+  </div></section>
+
+  <!-- ========== TYPOGRAPHY ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">04 — Typography</div>
+    <h2 class="sec">Three voices, clear jobs.</h2>
+    <div class="sec-aside">Playfair signs. Quicksand works. Lexend reads.</div>
+    <div class="scale">
+      <div><span class="tag">Display · Playfair Black + italic accents</span><span class="ty-display">From <em>surviving</em> to <em class="coral">thriving</em></span></div>
+      <div><span class="tag">Big head · Playfair 800 · 36px+</span><span class="ty-h1">Architecting AI-resilient teams</span></div>
+      <div><span class="tag">Accent · Playfair Italic</span><span class="ty-h2">&hellip;the human in the room.</span></div>
+      <div><span class="tag">Working head · Quicksand 700 · 24px</span><span class="ty-work">Context Engineering for Claude</span></div>
+      <div><span class="tag">Subhead · Quicksand 700 · 19px</span><span class="ty-h3">Pick the right starting point</span></div>
+      <div><span class="tag">Eyebrow · Quicksand 700</span><span class="ty-eye">AI in UXR · 101</span></div>
+      <div><span class="tag">Body · Lexend 400</span><span class="ty-body" style="max-width:52ch;">Research teams that want to lead, not follow — built on rigor, designed for humans, and written for the people doing the actual work.</span></div>
+      <div><span class="tag">Caption · Lexend 300</span><span class="ty-cap">Federal Reserve, 2025 · 2.2 hours/week recovered</span></div>
+    </div>
+    <div class="grid2" style="margin-top:26px;">
+      <div class="note" style="border-left-color:var(--coral)"><b>The signature move — italicize the pivot word.</b> In a heavy Playfair headline, set the emotional pivot word in italic <em style="font-family:'Playfair Display',serif;font-style:italic;font-weight:800;color:var(--teal-deep)">teal</em> on paper, or blush on navy. Repeat it everywhere — <i>humans</i>, <i>lead</i>, <i>thrive</i>. Coral is never used for text. Playfair only ever appears Bold+ at 24px+; never working headers or body.</div>
+      <div class="note"><b>Quicksand 700 works, Lexend reads.</b> Quicksand carries working headers and labels; Lexend carries all body. <b>Permanent Marker is an accent face</b> — use it sparingly for hand-drawn callouts. It's the community's signature, and it's fine anywhere in small doses. One serif only: if Fraunces ever tempts you, it replaces Playfair, it never joins it.</div>
+    </div>
+  </div></section>
+
+  <!-- ========== TEXTURE & DEVICES ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">05 — Texture &amp; Graphic Devices</div>
+    <h2 class="sec">The hand in the work.</h2>
+    <div class="sec-aside">Paper, brush, circle, engraving.</div>
+    <div class="grid3">
+      <div class="card"><div class="k">Substrate</div><h4>Textured paper</h4><p>The warm paper grain sits under every surface — site, deck, social, this document. It's the single strongest signal that a human, not a machine, made this. Non-negotiable.</p></div>
+      <div class="card" style="position:relative;overflow:hidden;"><div class="k">Signature shape</div><h4>Brush &amp; circle</h4><p>Organic brush blobs and overlapping circles, inked in coral and teal, mark corners and section breaks.</p>
+        <span style="position:absolute;right:-20px;bottom:-20px;width:90px;height:80px;background:var(--coral);opacity:.85;border-radius:64% 36% 54% 46%/52% 44% 56% 48%;"></span>
+        <span style="position:absolute;right:46px;bottom:14px;width:34px;height:34px;background:var(--teal);border-radius:50%;opacity:.9;"></span>
+      </div>
+      <div class="card"><div class="k">Anchor</div><h4>The engraving</h4><p>Your hand-illustrated portrait, inked in navy. The most ownable asset in the system — it works on paper, navy, coral, anywhere. It leads; color follows.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ========== VOICE ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">06 — Voice &amp; Tone</div>
+    <h2 class="sec">Say it like a person.</h2>
+    <div class="sec-aside">Your rarest asset is how you talk.</div>
+    <div class="voice">
+      <div style="margin-bottom:16px;"><span class="st">Professional Experience.</span> <span class="as">What I've been up to.</span></div>
+      <div style="margin-bottom:16px;"><span class="st">Qualifications.</span> <span class="as">In a nutshell.</span></div>
+      <div><span class="st">The toolkit.</span> <span class="as">For you.</span></div>
+      <p style="font-size:13.5px;margin-top:18px;">The <b>"Statement. / aside."</b> system: a confident serif label, softened by a warm italic aside. It's the verbal version of the whole brand — rigor plus humanity. Use it for section headers across site, decks, and docs.</p>
+    </div>
+    <div class="dodont">
+      <div class="do"><h4>Do</h4><p>Direct address. Active voice. Challenge before you reassure. Plain words a busy researcher reads in one pass.</p></div>
+      <div class="dont"><h4>Don't</h4><p>Corporate jargon, hype, or filler. No "supercharge your synergies." No fear-mongering about AI. No talking down.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ========== COMPONENTS ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">07 — Components</div>
+    <h2 class="sec">The system, applied.</h2>
+    <div class="sec-aside">Buttons, cards, quotes, tags.</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:30px;">
+      <button class="btn btn-primary">Book a call</button>
+      <button class="btn btn-accent">Get the menu</button>
+      <button class="btn btn-ghost">Read the framework</button>
+      <span class="pill">New cohort</span>
+    </div>
+    <div class="grid3" style="margin-bottom:30px;">
+      <div class="card"><div class="k">Service</div><h4>Agent Architect Sprint</h4><p>Turn AI users into AI agent architects in a 6–7 week remote intensive.</p></div>
+      <div class="card"><div class="k">Free</div><h4>AI in UXR 101</h4><p>The async course, in partnership with User Interviews. 1,200+ trained.</p></div>
+      <div class="card"><div class="k">Tool</div><h4>ROI Calculator</h4><p>Show your team the value of recovered research hours, live.</p></div>
+    </div>
+    <div class="quote"><span class="mk">"</span><p>Faster doesn't count unless it's right — and right still needs a human in the room.</p></div>
+    <div class="note" style="margin-top:26px;"><b>Component standards.</b> One radius on every button (4px). Interactive controls follow set rules: slider tracks are navy with a coral thumb and blush border; segmented toggles are navy with a blush border, blush text, and a paper-filled active state. Every prototype clears the Pre-Publish QA Checklist before it ships.</div>
+  </div></section>
+
+  <!-- ========== BRAND ARCHITECTURE / AIxUXR BRIDGE ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">08 — Brand Architecture</div>
+    <h2 class="sec">The person &amp; the movement.</h2>
+    <div class="sec-aside">One system, two roles.</div>
+    <p class="lead" style="margin-bottom:26px;">Hey Kaleb is the individual — your authority, your consultancy, your name. AIxUXR is the collective — the 600+ researchers you convene. They share one design system, but lead with different colors so the eye reads <i>person</i> versus <i>community</i> instantly. Think of AIxUXR as <b>a Hey Kaleb community</b>: endorsed by you, bigger than you.</p>
+    <div class="arch">
+      <div class="col personal">
+        <div class="label">The person · navy-led</div>
+        <div class="mark-hk">hey kaleb<span class="pd">.</span></div>
+        <p class="archnote">Navy authority, the engraved portrait, Playfair-forward. The expert in the room. Coral is the accent.</p>
+        <div style="margin-top:16px;display:flex;gap:8px;">
+          <span style="width:30px;height:30px;border-radius:6px;background:#243C54;display:inline-block;"></span>
+          <span style="width:30px;height:30px;border-radius:6px;background:#FA6060;display:inline-block;"></span>
+          <span style="width:30px;height:30px;border-radius:6px;background:#F3F1EC;border:1px solid #DAD3C5;display:inline-block;"></span>
+        </div>
+      </div>
+      <div class="col community">
+        <div class="label">The movement · teal-led</div>
+        <div class="mark-x">AI<span class="x">✕</span><span class="uxr">UXR</span></div>
+        <p class="archnote">Teal connection, the coral "✕" as the intersection of AI and research, a constellation of members. Permanent Marker is the community's signature face — that hand-made energy is exactly right here, and it doubles as a sparing accent elsewhere.</p>
+        <div class="mk-comm" style="font-size:25px;margin-top:8px;">surviving to thriving</div>
+        <div class="constellation" aria-hidden="true">
+          <i style="width:14px;height:14px;background:#549C9C;left:4%;top:30%;"></i>
+          <i style="width:8px;height:8px;background:#EFA8A8;left:16%;top:60%;"></i>
+          <i style="width:18px;height:18px;background:#FA6060;left:26%;top:14%;"></i>
+          <i style="width:10px;height:10px;background:#549C9C;left:40%;top:54%;"></i>
+          <i style="width:7px;height:7px;background:#EFA8A8;left:52%;top:24%;"></i>
+          <i style="width:16px;height:16px;background:#549C9C;left:62%;top:58%;"></i>
+          <i style="width:9px;height:9px;background:#FA6060;left:74%;top:20%;"></i>
+          <i style="width:12px;height:12px;background:#EFA8A8;left:86%;top:50%;"></i>
+          <i style="width:7px;height:7px;background:#549C9C;left:94%;top:24%;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="eyebrow" style="color:var(--teal-deep);margin-top:30px;">Shared DNA — what never changes between them</div>
+    <div class="shared">
+      <span class="s">Textured paper</span><span class="s">Playfair · Quicksand · Lexend</span><span class="s">Coral signature</span>
+      <span class="s">"Statement. / aside." voice</span><span class="s">Brush &amp; circle shapes</span><span class="s">Engraving craft</span>
+    </div>
+    <div class="grid2" style="margin-top:28px;">
+      <div class="note" style="border-left-color:var(--coral)"><b>Why navy vs teal:</b> color carries the relationship. Navy is singular and authoritative — one person. Teal is connective and calm — many people. Same family, different job, instantly legible.</div>
+      <div class="note"><b>The "✕" is the thesis:</b> AI <i>intersecting</i> UXR. It doubles as the community's standalone mark — coral on navy, or navy on paper — and as a connective glyph in headlines.</div>
+    </div>
+  </div></section>
+
+  <!-- ========== ACCESSIBILITY ========== -->
+  <section><div class="wrap">
+    <div class="eyebrow">09 — Accessibility</div>
+    <h2 class="sec">Readable by everyone.</h2>
+    <div class="sec-aside">Audited to WCAG 2.1 AA.</div>
+    <p class="lead" style="margin-bottom:24px;">Every pairing was contrast-tested. The structural palette is AAA-grade. Coral stays vivid as decoration and fills; Teal Ink carries accent text on paper; and on navy we pair with blush, jade teal, or paper so nothing reads harsh.</p>
+    <div class="grid2">
+      <div>
+        <div class="eyebrow" style="color:var(--teal-deep)">Passes — the workhorses</div>
+        <div style="font-size:13.5px;color:var(--body);line-height:2.05;">
+          Navy on paper — <b>10.06</b> · AAA<br>
+          Body grey on paper — <b>9.15</b> · AAA<br>
+          Paper on navy (cover, buttons) — <b>10.06</b> · AAA<br>
+          Dark text on coral button (fill) — <b>5.35</b> · AA<br>
+          Blush &ldquo;thriving&rdquo; on navy, large — <b>5.86</b> · AA<br>
+          Jade teal &ldquo;UXR&rdquo; on navy, large — <b>3.58</b> · AA
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" style="color:var(--teal-deep)">The rules</div>
+        <div style="font-size:13.5px;color:var(--body);line-height:2.05;">
+          Coral &rarr; <b>decoration &amp; fills only</b>, never text<br>
+          Accent text on paper &rarr; <b>Teal Ink #356E6E</b> · 5.16<br>
+          Eyebrows, links, pivot word &rarr; Teal Ink<br>
+          On navy &rarr; <b>blush / jade teal / paper</b>, never coral<br>
+          Pill fill &rarr; Teal-deep + white · 4.68
+        </div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:26px;border-left-color:var(--coral)"><b>The governing rule:</b> bright coral is decoration and fills only — never readable text. Teal Ink carries accent text on paper. On navy, never coral — pair with blush, jade teal, or paper. When in doubt on any surface, text is navy, body grey, or teal ink.</div>
+    <p style="font-size:12px;color:var(--teal-deep);margin-top:14px;">The paper texture is decorative, low-opacity, and does not meaningfully lower text contrast. Hairline dividers are decorative and exempt — kept light by intent.</p>
+  </div></section>
+
+  <!-- ========== INTERNAL NOTE ========== -->
+  <section><div class="wrap">
+    <div class="internal">
+      <h3>Internal · Why we moved off amber</h3>
+      <p>The previous black-and-amber site shared a hue family with a peer in the AI-research-training space whose brand also leads with golden-yellow on black. At glance scale — LinkedIn, conference slides, course cards — the two read as cousins. This system fixes that: coral is the furthest warm hue from that yellow, navy replaces black, and the texture-plus-engraving craft makes the brand unmistakable at any size. Differentiation now lives in things a competitor can't copy — your palette, your hand, your voice, and your tier.</p>
+    </div>
+  </div></section>
+
+  <div class="foot">hey kaleb · brand system v1.3 · surviving to thriving</div>
+</div>
